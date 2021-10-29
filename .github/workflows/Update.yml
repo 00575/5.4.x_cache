@@ -20,8 +20,9 @@ jobs:
 
       - name: 拉取
         run: |
+          cd include
           #git clone --depth 1 https://github.com/immortalwrt/immortalwrt -b openwrt-18.06-k5.4 new
-          wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-18.06-k5.4/include/kernel-version.mk
+          wget -N https://github.com/immortalwrt/immortalwrt/raw/openwrt-18.06-k5.4/include/kernel-version.mk
 
       #- name: 复制整理
         #run: | 
