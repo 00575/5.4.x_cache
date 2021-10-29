@@ -20,12 +20,13 @@ jobs:
 
       - name: 拉取
         run: |
-          git clone --depth 1 https://github.com/immortalwrt/immortalwrt -b openwrt-18.06-k5.4 new
-        
-      - name: 复制整理
-        run: | 
-          cp -rf new/include/kernel-version.mk ./include/kernel-version.mk
-          rm -rf new
+          #git clone --depth 1 https://github.com/immortalwrt/immortalwrt -b openwrt-18.06-k5.4 new
+          wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-18.06-k5.4/include/kernel-version.mk
+
+      #- name: 复制整理
+        #run: | 
+          #cp -rf new/include/kernel-version.mk ./include/kernel-version.mk
+          #rm -rf new
           
       - name: 添加文件到暂存区
         run: git add .
