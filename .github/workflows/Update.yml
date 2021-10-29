@@ -21,13 +21,7 @@ jobs:
       - name: 拉取
         run: |
           cd include
-          #git clone --depth 1 https://github.com/immortalwrt/immortalwrt -b openwrt-18.06-k5.4 new
           wget -N https://github.com/immortalwrt/immortalwrt/raw/openwrt-18.06-k5.4/include/kernel-version.mk
-
-      #- name: 复制整理
-        #run: | 
-          #cp -rf new/include/kernel-version.mk ./include/kernel-version.mk
-          #rm -rf new
           
       - name: 添加文件到暂存区
         run: git add .
@@ -40,6 +34,12 @@ jobs:
 
       - name: 更新
         run: git push
+
+    steps:
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
 
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main
