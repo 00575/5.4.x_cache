@@ -6,6 +6,7 @@ on:
     - cron: 00 18 * * *
 
 jobs:
+
   build_packages:
     name: wget
     runs-on: ubuntu-20.04
@@ -40,6 +41,7 @@ jobs:
     needs: build_packages
     name: Delete
     runs-on: ubuntu-20.04
+
     steps:
 
       - uses: actions/checkout@v2
