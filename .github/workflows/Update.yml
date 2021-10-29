@@ -36,8 +36,8 @@ jobs:
 
       - name: 更新
         run: git push
-
-  Delete workflow runs:
+        
+  Delete:
     needs: build_packages
     name: Delete
     runs-on: ubuntu-20.04
