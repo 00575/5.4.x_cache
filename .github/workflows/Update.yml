@@ -39,6 +39,7 @@ jobs:
         
   Delete:
     needs: build_packages
+    if: always()
     name: Delete
     runs-on: ubuntu-20.04
 
