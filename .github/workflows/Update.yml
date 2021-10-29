@@ -20,21 +20,13 @@ jobs:
 
       - name: 拉取
         run: |
-          svn export https://github.com/klever1988/nanopi-openwrt/trunk/ new
+          git clone --depth 1 https://github.com/immortalwrt/immortalwrt -b openwrt-18.06-k5.4 new
         
       - name: 复制整理
         run: | 
-          cp -rf new/*.seed ./
-          cp -rf new/scripts/merge_files.sh ./scripts/
-          cp -rf new/scripts/merge_packages.sh ./scripts/
-          cp -rf new/scripts/patches.sh ./scripts/
+          cp -rf new/include/kernel-version.mk ./include/kernel-version.mk
           rm -rf new
           
-      - name: 修改文件
-        run: | 
-          sed -i 's?klever1988/nanopi-openwrt?00575/Nanopi?g' scripts/patches.sh
-          sed -i 's/openwrt2020/argon/g' scripts/patches.sh
-         
       - name: 添加文件到暂存区
         run: git add .
              
@@ -42,7 +34,7 @@ jobs:
         run: git checkout .
 
       - name: 提交
-        run: git commit -am 'Update'
+        run: git commit -am '内核版本变动'
 
       - name: 更新
         run: git push
